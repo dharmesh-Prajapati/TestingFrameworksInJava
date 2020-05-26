@@ -16,7 +16,7 @@ import utilities.JsonParserUtility;
 public class TestHelper {
 	static public Properties prop;
 	public static ExcelUtility exlreader;
-	public static HttpConnectionUtility testLib;
+	public static HttpConnectionUtility httpConLib;
 	public static JsonParserUtility jsonParser;
 	
 	
@@ -36,14 +36,14 @@ public class TestHelper {
 	@BeforeTest
 	public void setUp() {
 		exlreader = new ExcelUtility(prop.getProperty("excelPath"), prop.getProperty("excelSheetName"));
-		testLib = new HttpConnectionUtility();
+		httpConLib = new HttpConnectionUtility();
 		jsonParser = new JsonParserUtility();
 	}
 	
 	@AfterTest
 	public void closeUp() {
 		exlreader=null;
-		testLib=null;
+		httpConLib=null;
 		jsonParser=null;
 	}
 }

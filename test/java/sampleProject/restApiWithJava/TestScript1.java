@@ -27,7 +27,7 @@ public class TestScript1 extends TestHelper {
 	public void testScript1TestCase1(String httpRequestType, String url) throws Exception {
 		System.out.println(httpRequestType);
 		System.out.println(url);
-		String responseInJson = testLib.getHttpResponseinJson(url);
+		String responseInJson = httpConLib.getHttpResponseinJson(url);
 		System.out.println(responseInJson);
 	}
 
