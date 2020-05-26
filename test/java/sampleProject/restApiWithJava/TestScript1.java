@@ -3,9 +3,7 @@ package sampleProject.restApiWithJava;
 
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Iterator;
-import java.util.Map;
 
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -15,9 +13,6 @@ import utilities.TestUtility;
 
 public class TestScript1 extends TestHelper {
 
-
-
-	// Print json Response
 
 	@DataProvider
 	public Iterator<Object[]> getData() {
