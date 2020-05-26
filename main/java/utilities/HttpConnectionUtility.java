@@ -8,11 +8,11 @@ import java.net.URL;
 import java.util.List;
 import java.util.Map;
 
-public class TestUtility {
+public class HttpConnectionUtility {
 
 
 
-	private static HttpURLConnection getRequestHttpConnection(String restApiUrl) {
+	private  HttpURLConnection getRequestHttpConnection(String restApiUrl) {
 
 		try {
 			URL url;
@@ -33,7 +33,7 @@ public class TestUtility {
 	}
 
 
-	public static String getHttpResponseinJson(String restApiUrl) throws Exception {
+	public  String getHttpResponseinJson(String restApiUrl) throws Exception {
 		String line = "";
 		StringBuffer strBuffer = new StringBuffer();
 		HttpURLConnection httpCon = getRequestHttpConnection(restApiUrl);

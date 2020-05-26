@@ -13,7 +13,7 @@ import org.json.simple.parser.JSONParser;
 public class JsonParserUtility {
 
 
-	public static  String getJsonStringValue(String jsonInString, String key) throws Exception {
+	public  String getJsonStringValue(String jsonInString, String key) throws Exception {
 
 		JSONParser jsonparser = new JSONParser();
 		JSONObject jsonObj = (JSONObject)jsonparser.parse(jsonInString);
@@ -47,7 +47,7 @@ public class JsonParserUtility {
 		}
 	}
 	
-	public static  List<Map<String, String>> getJsonListOfMap(String jsonInString, String key) throws Exception {
+	public   List<Map<String, String>> getJsonListOfMap(String jsonInString, String key) throws Exception {
 		List<Map<String, String>> jsonArrayList = new ArrayList<Map<String, String>>();
 		JSONParser jsonparser = new JSONParser();
 		JSONObject jsonObj = (JSONObject)jsonparser.parse(jsonInString);

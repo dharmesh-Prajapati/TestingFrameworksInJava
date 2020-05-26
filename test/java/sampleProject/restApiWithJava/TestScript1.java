@@ -8,9 +8,6 @@ import java.util.Iterator;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
-import utilities.TestHelper;
-import utilities.TestUtility;
-
 public class TestScript1 extends TestHelper {
 
 
@@ -30,13 +27,14 @@ public class TestScript1 extends TestHelper {
 	public void testScript1TestCase1(String httpRequestType, String url) throws Exception {
 		System.out.println(httpRequestType);
 		System.out.println(url);
-		String responseInJson = TestUtility.getHttpResponseinJson(url);
+		String responseInJson = testLib.getHttpResponseinJson(url);
 		System.out.println(responseInJson);
 	}
 
 
 	@Test
 	public void testScript2TestCase1() throws Exception {
+		
 
 	}
 }
