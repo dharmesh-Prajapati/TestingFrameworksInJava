@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
@@ -19,9 +21,11 @@ public class TestHelper {
 	public static HttpConnectionUtility httpConLib;
 	public static JsonParserUtility jsonParser;
 	
+	public static Logger logger = LogManager.getLogger(TestHelper.class);
 	
 	public TestHelper() {
 
+		logger.info("Loading properties file in TestHelper constructor");
 		prop = new Properties();
 		String fileName = "C:\\Users\\Dharmesh\\Documents\\Projects\\utilites\\config.properties";
 		InputStream is = null;
@@ -29,8 +33,11 @@ public class TestHelper {
 			is = new FileInputStream(fileName);
 			prop.load(is);
 		} catch (FileNotFoundException ex) {
+			logger.error("FileNotFoundExceptoin while loading properties file in TestHelper constructor");
 		} catch (IOException ex) {
+			logger.error("IOExceptoin while loading properties file in TestHelper constructor");
 		}
+		
 	}
 	
 	@BeforeTest

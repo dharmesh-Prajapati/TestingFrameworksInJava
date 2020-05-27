@@ -1,7 +1,5 @@
 package testSuite1;
 
-
-
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -25,10 +23,10 @@ public class TestScript1 extends TestHelper {
 	 */
 	@Test(dataProvider = "getData")
 	public void testScript1TestCase1(String httpRequestType, String url) throws Exception {
-		System.out.println(httpRequestType);
-		System.out.println(url);
+ 		logger.info(httpRequestType);
+ 		logger.info(url);
 		String responseInJson = httpConLib.getHttpResponseinJson(url);
-		System.out.println(responseInJson);
+		logger.info(responseInJson);
 	}
 
 

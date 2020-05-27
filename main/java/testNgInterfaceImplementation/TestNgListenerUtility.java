@@ -4,11 +4,13 @@ import org.testng.ITestContext;
 import org.testng.ITestListener;
 import org.testng.ITestResult;
 
+import testSuite1.TestHelper;
+
 public class TestNgListenerUtility implements ITestListener{
 
 	@Override
 	public void onTestStart(ITestResult result) {
-		
+		TestHelper.logger.info("Test Case "+result.getTestName()+" started.");
 	}
 
 	@Override
