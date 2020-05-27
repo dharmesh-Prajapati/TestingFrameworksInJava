@@ -1,4 +1,4 @@
-package sampleProject.restApiWithJava;
+package testSuite1;
 
 
 

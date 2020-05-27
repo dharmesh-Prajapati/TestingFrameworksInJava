@@ -1,12 +1,12 @@
-package sampleProject.restApiWithJava;
+package testSuite1;
 
 import static org.testng.Assert.assertEquals;
 
 import org.testng.annotations.Test;
 
-public class TestScript2 extends TestHelper{
+public class TestScript3 {
 
-	int count = 0;
+int count = 0;
 	
 	@Test(retryAnalyzer = testNgInterfaceImplementation.TestNgRetryAnalyzerUtility.class)
 	public void testScript2TestCase1() {
@@ -17,6 +17,13 @@ public class TestScript2 extends TestHelper{
 		
 		System.out.println(count);
 		
+		assertEquals(true, true);
+	}
+	
+	
+	
+	@Test(retryAnalyzer = testNgInterfaceImplementation.TestNgRetryAnalyzerUtility.class)
+	public void testScript2TestCase2() {
 		assertEquals(true, true);
 	}
 }
