@@ -11,6 +11,7 @@ public class TestNgAnnotationTransformerUtility implements IAnnotationTransforme
 	@Override
 	public void transform(ITestAnnotation annotation, @SuppressWarnings("rawtypes") Class testClass, @SuppressWarnings("rawtypes") Constructor testConstructor, Method testMethod) {
 		
+		annotation.setRetryAnalyzer(TestNgRetryAnalyzerUtility.class);
 	}
 
 }
