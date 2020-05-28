@@ -2,6 +2,8 @@ package utilities;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -62,7 +64,7 @@ public class ExcelUtility {
 		int rowNum = getRowCount();
 
 
-		for(int i = 2 ; i < rowNum; i++) {
+		for(int i = 1 ; i < rowNum; i++) {
 
 			String httpRequestType = getCellStringData( i, 0);
 			String restapiLink = getCellStringData( i, 1);
@@ -73,4 +75,23 @@ public class ExcelUtility {
 		return myData;
 	}
 
+	/*
+	 * Accepts integer as Test Case Row data fromExcel
+	 * First row as Key 
+	 * TestcaseNum as value
+	 * return HasMap
+	 * example "Browser", "UserId", "Password" from excel first row will be Key
+	 * for Test case 2: value will be "firefox" so on
+	 * 
+	 */
+	public  Map<String, String> exlMapData (int exltestCaseNum){
+		Map<String, String> mapData = new HashMap<String, String>();
+		int colNum = getColCount();
+		for(int i = 1 ; i < colNum; i++) {
+
+			mapData.put(getCellStringData(0, i), getCellStringData( exltestCaseNum, i));
+
+		}
+		return mapData;
+	}
 }

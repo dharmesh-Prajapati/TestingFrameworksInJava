@@ -1,4 +1,4 @@
-package testSuite1;
+package AUT_TestProjectIO.TC;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -12,24 +12,20 @@ import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
 
 import utilities.ExcelUtility;
-import utilities.HttpConnectionUtility;
-import utilities.JsonParserUtility;
 
-public class TestHelper {
+public class TestCaseHelper {
+	
 	static public Properties prop;
 	public static ExcelUtility exlreader;
-	public static HttpConnectionUtility httpConLib;
-	public static JsonParserUtility jsonParser;
 	
-	public static Logger logger = LogManager.getLogger(TestHelper.class);
+	public static Logger logger = LogManager.getLogger(TestCaseHelper.class);
 	
 	
 	/*
-	 *  TestHelper class helps all the test script classes with pre requisites.
+	 *  TestCaseHelper class helps all the test script classes with pre requisites.
 	 */
-	public TestHelper() {
+	public TestCaseHelper() {
 
-		logger.info("Loading properties file in TestHelper constructor");
 		prop = new Properties();
 		String fileName = "C:\\Users\\Dharmesh\\Documents\\Projects\\utilites\\config.properties";
 		InputStream is = null;
@@ -41,7 +37,6 @@ public class TestHelper {
 		} catch (IOException ex) {
 			logger.error("IOExceptoin while loading properties file in TestHelper constructor");
 		}
-		
 	}
 	
 	/*
@@ -50,8 +45,6 @@ public class TestHelper {
 	@BeforeTest
 	public void setUp() {
 		exlreader = new ExcelUtility(prop.getProperty("excelPath"), prop.getProperty("excelSheetName"));
-		httpConLib = new HttpConnectionUtility();
-		jsonParser = new JsonParserUtility();
 	}
 	
 	/*
@@ -60,7 +53,6 @@ public class TestHelper {
 	@AfterTest
 	public void closeUp() {
 		exlreader=null;
-		httpConLib=null;
-		jsonParser=null;
 	}
+
 }

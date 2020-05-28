@@ -14,7 +14,7 @@ import com.aventstack.extentreports.markuputils.ExtentColor;
 import com.aventstack.extentreports.markuputils.Markup;
 import com.aventstack.extentreports.markuputils.MarkupHelper;
 
-import testSuite1.TestHelper;
+import restApiWithJava.TestHelper;
 
 public class TestNgListenerUtility implements ITestListener{
 
