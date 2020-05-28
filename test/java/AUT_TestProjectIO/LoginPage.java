@@ -33,6 +33,30 @@ public class LoginPage {
 	
 	
 	/*
+	 * Enters userid
+	 */
+	public void enterUserId(String userId) {
+		username.sendKeys(userId);
+	}
+	
+	
+	/*
+	 * Enters password
+	 */
+	public void enterpassword(String password) {
+		user_password.sendKeys(password);
+	}
+	
+	/*
+	 * Enters password
+	 */
+	public void loginButton() {
+		loginButton.click();
+	}
+	
+	
+	
+	/*
 	 *  return true when 'Test Project' logo present 
 	 */
 	public boolean isLogoPresent() {
@@ -49,7 +73,7 @@ public class LoginPage {
 	/*
 	 * accepts userid and password to login to application
 	 */
-	public void loginToAoolication(String userID, String password) {
+	public void loginToApplication(String userID, String password) {
 		username.sendKeys(userID);
 		user_password.sendKeys(password);
 		

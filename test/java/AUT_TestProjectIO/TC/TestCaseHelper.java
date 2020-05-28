@@ -5,16 +5,22 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.Properties;
+import java.util.concurrent.TimeUnit;
 
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.testng.annotations.AfterMethod;
 import org.testng.annotations.AfterTest;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.BeforeTest;
 
 import utilities.ExcelUtility;
 
 public class TestCaseHelper {
 	
+	WebDriver driver;
 	static public Properties prop;
 	public static ExcelUtility exlreader;
 	
@@ -43,9 +49,26 @@ public class TestCaseHelper {
 	 * Before Test creates a static reference to the object needing in Test Execution.
 	 */
 	@BeforeTest
-	public void setUp() {
+	public void setUpBeforeClass() {
 		exlreader = new ExcelUtility(prop.getProperty("excelPath"), prop.getProperty("excelSheetName"));
 	}
+	
+	@BeforeMethod
+	public void setUpBeforeMethod() {
+		System.setProperty("webdriver.chrome.driver", prop.getProperty("chromeDriverExe"));
+		driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.manage().deleteAllCookies();
+		driver.manage().timeouts().pageLoadTimeout(40, TimeUnit.SECONDS);
+		driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
+	}
+
+	
+	@AfterMethod
+	public void tearDownAfterMethod() {
+		driver.quit();
+	}
+	
 	
 	/*
 	 * After Test all static references made to point null after test execution to let Garbage collector do its work.
