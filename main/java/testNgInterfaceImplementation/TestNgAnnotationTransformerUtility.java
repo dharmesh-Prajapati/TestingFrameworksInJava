@@ -9,7 +9,8 @@ import org.testng.annotations.ITestAnnotation;
 public class TestNgAnnotationTransformerUtility implements IAnnotationTransformer{
 
 	@Override
-	public void transform(ITestAnnotation annotation, @SuppressWarnings("rawtypes") Class testClass, @SuppressWarnings("rawtypes") Constructor testConstructor, Method testMethod) {
+	public void transform(ITestAnnotation annotation, @SuppressWarnings("rawtypes") Class testClass, @SuppressWarnings("rawtypes") 
+							Constructor testConstructor, Method testMethod) {
 		
 		annotation.setRetryAnalyzer(TestNgRetryAnalyzerUtility.class);
 	}

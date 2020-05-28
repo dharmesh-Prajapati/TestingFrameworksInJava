@@ -23,6 +23,10 @@ public class TestHelper {
 	
 	public static Logger logger = LogManager.getLogger(TestHelper.class);
 	
+	
+	/*
+	 *  TestHelper class helps all the test script classes with pre requisites.
+	 */
 	public TestHelper() {
 
 		logger.info("Loading properties file in TestHelper constructor");
@@ -40,6 +44,9 @@ public class TestHelper {
 		
 	}
 	
+	/*
+	 * Before Test creates a static reference to the object needing in Test Execution.
+	 */
 	@BeforeTest
 	public void setUp() {
 		exlreader = new ExcelUtility(prop.getProperty("excelPath"), prop.getProperty("excelSheetName"));
@@ -47,6 +54,9 @@ public class TestHelper {
 		jsonParser = new JsonParserUtility();
 	}
 	
+	/*
+	 * After Test all static references made to point null after test execution to let Garbage collector do its work.
+	 */
 	@AfterTest
 	public void closeUp() {
 		exlreader=null;

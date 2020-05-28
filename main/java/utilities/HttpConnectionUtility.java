@@ -12,12 +12,15 @@ public class HttpConnectionUtility {
 
 
 
+	/*
+	 * accepts url link as String.
+	 * returns instance of HttpURLConnection with GET request method 
+	 */
 	private  HttpURLConnection getRequestHttpConnection(String restApiUrl) {
-
 		try {
+
 			URL url;
 			HttpURLConnection httpCon;
-
 			url = new URL(restApiUrl);
 			httpCon = (HttpURLConnection) url.openConnection();
 			httpCon.setRequestMethod("GET");
@@ -26,13 +29,18 @@ public class HttpConnectionUtility {
 			return httpCon;
 
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return null;
 		}
 	}
 
 
+	/*
+	 * accepts url link of rest api as String
+	 * calls getRequestHttpConnection(String restApiUrl) to get instance of HttpURLConnection.
+	 * on HttpURLConnection instance with response code 200 assigns response to stringBuffer and returns as String
+	 *  else returns null
+	 */
 	public  String getHttpResponseinJson(String restApiUrl) throws Exception {
 		String line = "";
 		StringBuffer strBuffer = new StringBuffer();
@@ -54,16 +62,16 @@ public class HttpConnectionUtility {
 	}
 
 
-	public static void getRequestHeader() throws IOException {
+	/*
+	 * accepts url link of rest api as String
+	 * calls getRequestHttpConnection(String restApiUrl) to get instance of HttpURLConnection.
+	 * on HttpURLConnection instance with response code 200 
+	 * prints request header to the restapi link
+	 */
+	public void getRequestHeader(String restApiUrl) throws IOException {
 
-		URL url = new URL("http://dummy.restapiexample.com/api/v1/employees");
-		HttpURLConnection httpCon = (HttpURLConnection) url.openConnection();
-		httpCon.setRequestMethod("GET");
-		httpCon.setReadTimeout(3000);
+		HttpURLConnection httpCon = getRequestHttpConnection(restApiUrl);
 
-		int responseCode = httpCon.getResponseCode();
-
-		System.out.println(responseCode);
 		Map<String, List<String>> map = httpCon.getHeaderFields();
 
 		System.out.println("Printing Response Header...\n");
@@ -81,10 +89,7 @@ public class HttpConnectionUtility {
 		} else {
 			System.out.println("Server - " + server);
 		}
-
 		System.out.println("\n Done");
-
-
 		httpCon.disconnect();
 
 	}

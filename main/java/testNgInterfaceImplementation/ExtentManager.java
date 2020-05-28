@@ -6,8 +6,14 @@ import com.aventstack.extentreports.reporter.configuration.Theme;
 
 public class ExtentManager {
 
+	
 	private static ExtentReports extent;
 
+	/*
+	 * accepts a parameter String fileName.
+	 * fileName variable is String with path to save generated extent report with date time 
+	 * Creates and returns an instance of ExtentReports with parameters currently hard coded.
+	 */
 	public static ExtentReports createInstance(String fileName) {
 		
 		System.out.println(fileName);

@@ -18,13 +18,21 @@ import testSuite1.TestHelper;
 
 public class TestNgListenerUtility implements ITestListener{
 
+	
 	static Date d = new Date();
+	// path to save generated extent report with date.
 	static String fileName = "Extent_" + d.toString().replace(":", "_") + ".html";
 
 	static ExtentReports extent = ExtentManager.createInstance(System.getProperty("user.dir")+"\\reports\\"+fileName);
+	
+	// Thread safe instance with ExtentTest Generic to provide multiple Testcases execute parallely.
 	public static ThreadLocal<ExtentTest> testReports = new ThreadLocal<ExtentTest>();
 
 
+	/*
+	 * OnTestStart test is created with Testcase name.
+	 * @see org.testng.ITestListener#onTestStart(org.testng.ITestResult)
+	 */
 	@Override
 	public void onTestStart(ITestResult result) {
 
@@ -80,7 +88,10 @@ public class TestNgListenerUtility implements ITestListener{
 	public void onFinish(ITestContext context) {
 
 		TestHelper.logger.info("Test Case "+context.getName()+" ended.");
-		extent.flush();
+		if(extent != null) {
+			extent.flush();	
+		}
+		
 	}
 
 }

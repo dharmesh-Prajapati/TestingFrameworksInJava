@@ -11,7 +11,10 @@ public class ExcelUtility {
 	XSSFWorkbook xsfWb;
 	XSSFSheet xsfSheet;
 
-	
+	/*
+	 * ExcelUtility with excel path and sheetname creates and instance of XSSFWorkbook and XSSFSheet
+	 * as the object of ExcelUtility is created
+	 */
 	public ExcelUtility(String excelFile, String sheetName) {
 		 try {
 			this.xsfWb= new XSSFWorkbook(excelFile);
@@ -22,12 +25,19 @@ public class ExcelUtility {
 	}
 
 
+	/*
+	 * return the last row number in excel sheet
+	 */
 	public  int getRowCount() {
 		int rowCount = xsfSheet.getPhysicalNumberOfRows();
 		//System.out.println("Physical Number of Rows are "+rowCount);
 		return rowCount;
 	}
+	
 
+	/*
+	 * return the last column number in excel sheet
+	 */
 	public int getColCount() {
 		int colCount = xsfSheet.getRow(0).getPhysicalNumberOfCells();
 		//System.out.println("Physical Number of Collumns are "+colCount);
@@ -35,12 +45,18 @@ public class ExcelUtility {
 	}
 
 
+	/*
+	 * returns the cell value of given row number and column number.
+	 */
 	public  String getCellStringData(int rowNum, int colNum)  {
 		String cellData = xsfSheet.getRow(rowNum).getCell(colNum).getStringCellValue();
 		//System.out.println("Cell String data is "+ cellData);
 		return cellData;
 	}
 
+	/*
+	 * returns an arrayList  of array of Object to data provider
+	 */
 	public  ArrayList<Object[]> getTestdata () {
 		ArrayList<Object[]> myData = new ArrayList<Object []>();
 		int rowNum = getRowCount();
@@ -53,9 +69,7 @@ public class ExcelUtility {
 
 			Object [] objArr = {httpRequestType, restapiLink};
 			myData.add(objArr);
-
 		}
-
 		return myData;
 	}
 

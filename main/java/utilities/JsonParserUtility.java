@@ -13,6 +13,10 @@ import org.json.simple.parser.JSONParser;
 public class JsonParserUtility {
 
 
+	/*
+	 * with repository org.json.simple
+	 * accepts json in string and key to iterate and return value in String
+	 */
 	public  String getJsonStringValue(String jsonInString, String key) throws Exception {
 
 		JSONParser jsonparser = new JSONParser();
@@ -47,16 +51,16 @@ public class JsonParserUtility {
 		}
 	}
 	
+	/*
+	 * json as string and key to iterate over jsonArray
+	 * returns List of Map of JSONARRAY.
+	 */
 	public   List<Map<String, String>> getJsonListOfMap(String jsonInString, String key) throws Exception {
 		List<Map<String, String>> jsonArrayList = new ArrayList<Map<String, String>>();
 		JSONParser jsonparser = new JSONParser();
 		JSONObject jsonObj = (JSONObject)jsonparser.parse(jsonInString);
 		JSONArray jsonArray = (JSONArray) jsonObj.get(key);
 
-		/*System.out.println("-----------------------------");
-		System.out.println(jsonArray.size());
-		System.out.println("-----------------------------");
-		*/
 		@SuppressWarnings("unchecked")
 		Iterator<Object> iterator = jsonArray.iterator();
 		while(iterator.hasNext()){
