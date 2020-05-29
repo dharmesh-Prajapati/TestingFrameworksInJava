@@ -54,15 +54,6 @@ public class LoginPage {
 		loginButton.click();
 	}
 	
-	
-	
-	/*
-	 *  return true when 'Test Project' logo present 
-	 */
-	public boolean isLogoPresent() {
-		return logoTestProject.isDisplayed();
-	}
-	
 	/*
 	 * click on Forgot password Link
 	 */

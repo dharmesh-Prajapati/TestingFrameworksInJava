@@ -18,13 +18,13 @@ import restApiWithJava.TestHelper;
 
 public class TestNgListenerUtility implements ITestListener{
 
-	
+
 	static Date d = new Date();
 	// path to save generated extent report with date.
 	static String fileName = "Extent_" + d.toString().replace(":", "_") + ".html";
 
 	static ExtentReports extent = ExtentManager.createInstance(System.getProperty("user.dir")+"\\reports\\"+fileName);
-	
+	public static ExtentTest test;  
 	// Thread safe instance with ExtentTest Generic to provide multiple Testcases execute parallely.
 	public static ThreadLocal<ExtentTest> testReports = new ThreadLocal<ExtentTest>();
 
@@ -38,8 +38,9 @@ public class TestNgListenerUtility implements ITestListener{
 
 		TestHelper.logger.info("Test Case "+result.getTestClass().getName()+" "+result.getMethod().getMethodName()+" started.");
 
-		ExtentTest test  = extent.createTest(result.getTestClass().getName()+" @TestCase: "+result.getMethod().getMethodName());
+		test  = extent.createTest(result.getTestClass().getName()+" @TestCase: "+result.getMethod().getMethodName());
 		testReports.set(test);
+		test.log(Status.INFO, "Test Case "+result.getTestClass().getName()+" "+result.getMethod().getMethodName()+" started.");
 
 	}
 
@@ -86,12 +87,11 @@ public class TestNgListenerUtility implements ITestListener{
 
 	@Override
 	public void onFinish(ITestContext context) {
-
-		TestHelper.logger.info("Test Case "+context.getName()+" ended.");
+		test.log(Status.INFO, "Test Case Finished.");
 		if(extent != null) {
 			extent.flush();	
 		}
-		
+
 	}
 
 }
