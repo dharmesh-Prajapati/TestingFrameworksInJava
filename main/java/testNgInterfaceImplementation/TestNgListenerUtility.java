@@ -49,6 +49,7 @@ public class TestNgListenerUtility implements ITestListener{
 		String logText = "<b>Test Method "+result.getMethod().getMethodName().toUpperCase()+" SUCCESSFUL</b>";
 		Markup m = MarkupHelper.createLabel(logText, ExtentColor.GREEN);
 		testReports.get().log(Status.PASS, m);
+		test.log(Status.INFO, "Test Case Finished.");
 	}
 
 	@Override
@@ -63,6 +64,7 @@ public class TestNgListenerUtility implements ITestListener{
 		String logText = "<b>Test Method "+ methodName +" failed</b>";
 		Markup m = MarkupHelper.createLabel(logText, ExtentColor.RED);
 		testReports.get().log(Status.FAIL,m);
+		test.log(Status.INFO, "Test Case Finished.");
 	}
 
 	@Override
@@ -70,7 +72,7 @@ public class TestNgListenerUtility implements ITestListener{
 		String logText = "<b>Test Method "+result.getMethod().getMethodName()+" SKIPPED</b>";
 		Markup m = MarkupHelper.createLabel(logText, ExtentColor.YELLOW);
 		testReports.get().log(Status.SKIP, m);
-
+		test.log(Status.INFO, "Test Case Finished.");
 	}
 
 	@Override
@@ -87,7 +89,7 @@ public class TestNgListenerUtility implements ITestListener{
 
 	@Override
 	public void onFinish(ITestContext context) {
-		test.log(Status.INFO, "Test Case Finished.");
+		
 		if(extent != null) {
 			extent.flush();	
 		}

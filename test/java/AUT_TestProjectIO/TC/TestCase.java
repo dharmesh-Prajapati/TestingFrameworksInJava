@@ -28,10 +28,10 @@ public class TestCase extends TestCaseHelper{
 		
 		TestNgListenerUtility.test.log(Status.INFO, "Logged to url "+mapData.get("url"));
 		
-		LoginPage loginpage  = PageFactory.initElements(driver, LoginPage.class);
+		LoginPage loginpage  = new LoginPage(driver);
 		loginpage.loginToApplication(mapData.get("UserId"), mapData.get("Password"));
 		
-		HomePage homepage  = PageFactory.initElements(driver, HomePage.class);
+		HomePage homepage  = new HomePage(driver);
 		assertEquals(homepage.isLogoPresent(), true);
 		
 		TestNgListenerUtility.test.log(Status.INFO, "Logged into application Success.");
@@ -46,7 +46,8 @@ public class TestCase extends TestCaseHelper{
 		LoginPage loginpage  = PageFactory.initElements(driver, LoginPage.class);
 		loginpage.enterUserId(mapData.get("UserId"));
 		loginpage.loginButton();
-	
+		assertEquals(loginpage.errorMessage(), true);
+		TestNgListenerUtility.test.log(Status.INFO, "Invalid username password message");
 	}
 	
 

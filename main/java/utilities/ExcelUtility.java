@@ -51,7 +51,7 @@ public class ExcelUtility {
 	 * returns the cell value of given row number and column number.
 	 */
 	public  String getCellStringData(int rowNum, int colNum)  {
-		String cellData = xsfSheet.getRow(rowNum).getCell(colNum).getStringCellValue();
+		String cellData = xsfSheet.getRow(rowNum).getCell(colNum).getStringCellValue().toString();
 		//System.out.println("Cell String data is "+ cellData);
 		return cellData;
 	}
@@ -66,8 +66,8 @@ public class ExcelUtility {
 
 		for(int i = 1 ; i < rowNum; i++) {
 
-			String httpRequestType = getCellStringData( i, 0);
-			String restapiLink = getCellStringData( i, 1);
+			String httpRequestType = getCellStringData( i, 1);
+			String restapiLink = getCellStringData( i, 2);
 
 			Object [] objArr = {httpRequestType, restapiLink};
 			myData.add(objArr);
