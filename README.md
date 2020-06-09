@@ -10,3 +10,8 @@ and different excel sheet for data as parameter.
    
 2. Package name with AUT_TestProjectIO contains page object class (implemented with POM PageFactory) for selenium testing.
    Package name with AUT_TestProjectIO.TC contains "TestScript" and "TestCaseHelper" to validate Login Functionality.
+   
+3. Package name with AUT_NewToursWebPage contains page object class (implemented with POM PageFactory) for selenium testing.
+   Package name with AUT_NewToursWebPage.TC contains "TestScript" and "TestCaseHelper" for testscripts.
+   
+   P.S. one framework contains 3 testing application/
